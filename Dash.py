@@ -21,7 +21,7 @@ def extract_entry_id(team_link_or_id: str) -> int:
 def get_team_name(entry_id: int):
     url = f"https://fantasy.premierleague.com/api/entry/{entry_id}/"
     data = requests.get(url).json()
-    name = data.get("entry_name") or data.get("name") or data.get("player_first_name")
+    name = data.get("player_first_name") + data.get("player_last_name")
     return name
 
 def get_gw_points(entry_id: int, gw_max=14):
